@@ -1,12 +1,14 @@
 import type { Config } from "tailwindcss"
 
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+    './app/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
 	],
   prefix: "",
   theme: {
@@ -19,6 +21,30 @@ const config = {
     },
     extend: {
       colors: {
+        green: {
+          500: "#24AE7C",
+          600: "#0D2A1F",
+        },
+        blue: {
+          500: "#79B5EC",
+          600: "#152432",
+        },
+        red: {
+          500: "#F37877",
+          600: "#3E1716",
+          700: "#F24E43",
+        },
+        light: {
+          200: "#E8E9E9",
+        },
+        dark: {
+          200: "#0D0F10",
+          300: "#131619",
+          400: "#1A1D21",
+          500: "#363A3D",
+          600: "#76828D",
+          700: "#ABB8C4",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -53,6 +79,9 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -73,8 +102,19 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    debugScreens: {
+      style: {
+        backgroundColor: '#C0FFEE',
+        color: 'black',
+      },
+      ignore: ['dark'],
+      position: ['bottom', 'left'],
+    },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('tailwindcss-debug-screens'),
+  ],
 } satisfies Config
 
 export default config

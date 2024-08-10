@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Footer, Hero } from "@/components/sections";
+import { Footer, Hero, Navbar } from "@/components/sections";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,13 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${process.env.NODE_ENV == "development" ? "debug-screens" : ""}`}>
         <main className="max-w-7xl mx-auto bg-[#0F1117]">
-          <Hero />
+          <Navbar />
+          {/* <Hero /> */}
             {children}
           <Footer />
         </main>
-      </body>
+        </body>
     </html>
   );
 }

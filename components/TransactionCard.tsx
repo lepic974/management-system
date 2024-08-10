@@ -2,9 +2,7 @@ import Image from "next/image";
 
 export interface TransactionProp {
     id: string;
-    img: {
-        original: string;
-    };
+    img: string;
     desc: string;
     amount: string;
     reward?: number;
@@ -24,7 +22,7 @@ async function TransactionCard({ transaction }: Prop ) {
            border-s-orange-500 border-2 rounded-xl py-5 px-4 mx-auto space-x-4 relative">
             <Image
                 // src={transaction.img.original}
-                src={transaction.img.original}
+                src={transaction.img}
                 alt={transaction.desc}
                 fill
                 priority
