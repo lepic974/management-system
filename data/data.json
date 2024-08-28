@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Voyages",
+    "description": "Allez au bout du monde.",
+    "image": "https://images.unsplash.com/photo-1724454216479-340fff563a19?q=80&w=3280&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "price": 599
+  },
+  {
+    "id": 2,
+    "title": "Restaurant",
+    "description": "Mangez ce que vous avez envie.",
+    "image": "https://plus.unsplash.com/premium_photo-1692833836807-7c2ec90aec19?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "price": 34
+  },
+  {
+    "id": 3,
+    "title": "High-Tech",
+    "description": "Offez-vous le meilleur des matériels.",
+    "image": "https://images.unsplash.com/photo-1719937206255-cc337bccfc7d?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "price": 999
+  },
+  {
+    "id": 4,
+    "title": "Mode",
+    "description": "Tout le prêt-à-poter à porter de main.",
+    "image": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?q=80&w=3272&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "price": 129
+  }
+]

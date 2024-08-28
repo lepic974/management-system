@@ -2,26 +2,15 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
- 
+
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id            String          @id @default(cuid())
-  name          String?
-  email         String          @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
- 
+// My Database
+
+//** AUTH **//
+
 model Account {
   userId            String
   type              String
@@ -34,33 +23,33 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([provider, providerAccountId])
 }
- 
+
 model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@id([identifier, token])
 }
- 
+
 // Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
@@ -71,8 +60,100 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([userId, credentialID])
+}
+
+//** BANKING **//
+
+model AccountBanking {
+  userId        String
+  accountBankId String
+  bankingId     String
+  bankName      String
+  iban          String?
+  address1      String?
+  address2      String?
+  city          String?
+  cdoePostal    Int?
+  country       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [bankingId], references: [id], onDelete: Cascade)
+
+  @@id([bankingId, bankName])
+}
+
+// enum statusBank {
+//   {
+//     "PENDING",
+//     "VALIDED",
+//     "CANCELED"
+//   }}
+
+//** FIDELITY **//
+//** IDENTITY **//
+
+// My application
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  username      String    @unique
+  bio           String?
+  link          String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  followers Follow[]  @relation("follower")
+  followeds Follow[]  @relation("followed")
+  posts     Post[]
+  likes     Like[]
+  accounts  Account[]
+  sessions  Session[]
+
+  accountBank AccountBanking[]
+
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+}
+
+model Post {
+  id       String   @id @default(cuid())
+  content  String
+  parentId String?
+  userId   String
+  createAt DateTime @default(now())
+
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes   Like[]
+  replies Post[] @relation("comments")
+  parent  Post?  @relation("comments", fields: [parentId], references: [id], onDelete: Cascade)
+}
+
+model Like {
+  id       String   @id @default(cuid())
+  userId   String
+  postId   String
+  createAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createAt    DateTime @default(now())
+
+  follower User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  followed User @relation("followed", fields: [followingId], references: [id], onDelete: Cascade)
 }

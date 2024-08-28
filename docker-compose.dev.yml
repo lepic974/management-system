@@ -1,0 +1,32 @@
+version: '1'
+
+services:
+  next-app:
+    container_name: management-system_dev
+    build: 
+      context: ./next-app
+      dockerfile: Dockerfile
+
+    # Set enviromment variables 
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+
+    # Set enviromment variables based in .env file
+    env_file:
+      - .env
+    volumes:
+      - ./next-app/src:/app/src
+      - ./next-app/public:/app/public
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - my_network
+  
+  # Add more containers
+
+  # Define a network
+  network:
+    my_network:
+      external: true

@@ -21,6 +21,11 @@ const config = {
     },
     extend: {
       colors: {
+        primary: {
+          DEFAULT: "#221C47",
+          light: "#4D4373",
+          dark: "#000020"
+        },
         green: {
           500: "#24AE7C",
           600: "#0D2A1F",
@@ -50,10 +55,10 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

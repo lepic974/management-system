@@ -1,0 +1,14 @@
+version: '1'
+
+services:
+  management-system:
+    environment:
+      - JWT_SECRET
+
+    container_name: management-system_dev
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8000:8000

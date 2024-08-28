@@ -1,23 +1,26 @@
+import { authConfig } from "@/app/api/exAuth/[...nextauth]";
+import { LoginButton } from "@/components/AuthButtons";
+import { Button } from "@/components/ui/button";
+import getServerSession from "next-auth";
 
-import React from 'react'
-import { authConfig } from '@/app/api/auth/[...nextauth]'
-import { LoginButton } from '@/app/AuthButtons'
-import getServerSession from 'next-auth'
-
-
-async function SignIn () {
-
-  const session = await getServerSession(authConfig)
+async function SignIn() {
+  const session = await getServerSession(authConfig);
 
   if (session) {
-    return <p>{JSON.stringify(session, null, 2)}</p>
+    return <p>{JSON.stringify(session, null, 2)}</p>;
   }
+
   return (
-    <div>
+    <div className="flex h-screen max-h-screen w-full">
+      <section className="remove-scollbar container my-auto">
+        <h1 className="header text-3xl text-white">Sign In</h1>
+      </section>
+
+      <Button variant="link">Home</Button>
+
       <LoginButton />
     </div>
-  )
+  );
 }
-  
 
-export default SignIn
+export default SignIn;

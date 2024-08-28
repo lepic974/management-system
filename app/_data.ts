@@ -104,3 +104,36 @@ export const data = [
         createAt: "2024/11/23"
     }
 ]
+
+
+const ColorItem = [
+  {
+    id: 1,
+    title: "Color Primary",
+    children: {
+      primary: {
+        variant1: {
+          id: 1,
+          type: "Primary",
+          name: "Primary",
+          color: "#123243",
+        },
+        variant2: {
+          id: 2,
+          name: "Primary Light",
+          color: "",
+        },
+        variant3: {
+          id: 3,
+          name: "Primary Dark",
+          color: "",
+        },
+      },
+      secondary: {
+        id: 1,
+        name: "",
+        color: "",
+      },
+    },
+  },
+];
