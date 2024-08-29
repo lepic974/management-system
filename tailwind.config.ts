@@ -26,6 +26,9 @@ const config = {
           light: "#4D4373",
           dark: "#000020"
         },
+        secondaryNew: {
+          DEFAULT: "#FFFF00",
+        },
         green: {
           500: "#24AE7C",
           600: "#0D2A1F",

@@ -1,4 +1,4 @@
-import { authConfig } from "@/app/api/exAuth/[...nextauth]";
+import { authConfig } from "@/app/api/Auth/[...nextauth]";
 import { LoginButton } from "@/components/AuthButtons";
 import { Button } from "@/components/ui/button";
 import getServerSession from "next-auth";
