@@ -1,6 +1,6 @@
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
@@ -44,11 +44,12 @@ model Session {
 }
 
 model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
 
-  @@id([identifier, token])
+  @@unique([email, token])
 }
 
 // Optional for WebAuthn support
@@ -101,6 +102,11 @@ model AccountBanking {
 
 // My application
 
+enum UserRole {
+  ADMIN
+  USER
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -108,7 +114,8 @@ model User {
   password      String?
   emailVerified DateTime?
   image         String?
-  username      String    @unique
+  username      String?   @unique
+  role          UserRole  @default(USER)
   bio           String?
   link          String?
   createdAt     DateTime  @default(now())

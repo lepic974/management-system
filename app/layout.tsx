@@ -17,8 +17,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html lang="en"> 
       {/* <SessionWrapper> */}
         <ThemeProvider attribute="class" defaultTheme="dark">
           <body
