@@ -4,6 +4,7 @@ import * as z from "zod"
 
 import { signIn } from "@/auth"
 import { getUserByEmail } from "@/data/user"
+import { sendVerificationEmail } from "@/lib/mail"
 import { generateVerificationToken } from "@/lib/token"
 import { DEFAUTL_LOGIN_REDIRECT } from "@/routes"
 import { LoginSchema } from "@/schemas"
@@ -27,6 +28,11 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 	if(!existingUser.emailVerified) {
 		const verificationToken = await generateVerificationToken(
 			existingUser.email
+		)
+
+		await sendVerificationEmail(
+			verificationToken.email,
+			verificationToken.token
 		)
 
 		return {success: "Confirmation email sent!"}

@@ -6,7 +6,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 	const comfirmLink = `http://localhost:3000/auth/new-verification?token=${token}`
 
 	await resend.emails.send({
-		from: "contact@yanipay.com",
+		from: "onboarding@resend.com",
 		to: email,
 		subject: "Comfirm your e-mail",
 		html: `<p>Click <a href="${comfirmLink}"here</a> to comfirm email.</p>`,
