@@ -1,36 +1,43 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import SessionWrapper from "@/lib/SessionWapper";
-import { Inter, Poppins } from "next/font/google";
-import React from "react";
-import "./globals.css";
+import { auth } from "@/auth"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
+import type { Metadata } from "next"
+import { SessionProvider } from "next-auth/react"
+import { Inter, Poppins } from "next/font/google"
+import React from "react"
+import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] });
-const poppins = Poppins({ subsets: ["latin"], weight: ["100", "300", "500"] });
+const inter = Inter({ subsets: ["latin"] })
+const poppins = Poppins({ subsets: ["latin"], weight: ["100", "300", "500"] })
 
-export const metadata = {
-  title: "YaniPay",
-  description: "Super Application for save your money",
-};
+export const metadata: Metadata = {
+	title: "YaniPay",
+	description: "Super Application for save your money",
+}
 
-export default function RootLayout({
-  children,
+export default async function RootLayout({
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
+	const session = await auth()
 
-  return (
-    <html lang="en"> 
-      {/* <SessionWrapper> */}
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <body
-            className={`${inter.className} ${
-              process.env.NODE_ENV == "development" ? "debug-screens" : ""
-            }`}
-          >
-            {children}
-          </body>
-        </ThemeProvider>
-      {/* </SessionWrapper> */}
-    </html>
-  );
+	return (
+		<SessionProvider session={session}>
+			<html lang="en">
+				{/* <SessionWrapper> */}
+				<ThemeProvider attribute="class" defaultTheme="dark">
+					<body
+						className={`${inter.className} ${
+							process.env.NODE_ENV == "development" ? "debug-screens" : ""
+						}`}
+					>
+						<Toaster />
+						{children}
+					</body>
+				</ThemeProvider>
+				{/* </SessionWrapper> */}
+			</html>
+		</SessionProvider>
+	)
 }

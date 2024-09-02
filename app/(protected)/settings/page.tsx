@@ -1,20 +1,25 @@
-import { auth, signOut } from "@/auth"
-import { Button } from "@/components/ui/button"
+"use client"
 
-const SettingsPage = async () => {
-	const session = await auth()
+import { logout } from "@/actions/logout"
+import { Button } from "@/components/ui/button"
+import { useSession } from "next-auth/react"
+import {useCurrentUser} from "@/hooks/use-current-user"
+
+const SettingsPage = () => {
+	const user = useCurrentUser()
+
+	const onClick = () => {
+		logout()
+	}
 
 	return (
-		<div>
-			{JSON.stringify(session)}
+		<div className="bg-white p-10 gap-5 rounded-xl">
+			{/* {JSON.stringify(user)} */}
 
-			<form
-				action={async () => {
-					"use server"
-					await signOut()
-				}}
-			>
-				<Button type="submit">Sign out</Button>
+			<form>
+				<Button onClick={onClick} type="submit" className="text-black">
+					Sign out
+				</Button>
 			</form>
 		</div>
 	)

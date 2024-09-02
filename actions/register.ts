@@ -2,7 +2,7 @@
 
 import { getUserByEmail } from "@/data/user"
 import { db } from "@/lib/db"
-import { generateVerificationToken } from "@/lib/token"
+import { generateVerificationToken } from "@/lib/tokens"
 import { RegisterSchema } from "@/schemas"
 import bcrypt from "bcryptjs"
 import * as z from "zod"
