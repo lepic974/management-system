@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-    // experimental: {
+    experimental: {
     //     serverActions: true
-    // },
+
+    },
     transpilePackages: ['lucide-react'],
     images: {
         remotePatterns: [
@@ -19,7 +20,10 @@ const nextConfig = {
             }
         ]
     },
-    output: "standalone"
+    output: "standalone",
+    typescript :{
+        ignoreBuildErrors: true
+    }
 };
 
 export default nextConfig

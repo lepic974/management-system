@@ -1,16 +1,17 @@
-import { Card, CardFooter, CardHeader } from "../ui/card"
-import { BackButton } from "./back-button"
-import { Header } from "./header"
+import { TriangleAlertIcon } from "lucide-react"
+import { CardWrapper } from "./card-wrapper"
 
 export const ErrorCard = () => {
 	return (
-		<Card className="w-[400px] shadow-md">
-			<CardHeader>
-				<Header label="Oops! Something went wrong!" />
-			</CardHeader>
-			<CardFooter>
-				<BackButton label="Back to login" href="/auth/login" />
-			</CardFooter>
-		</Card>
+		<CardWrapper
+			headerLabel="Oops! Something went wrong!"
+			backButtonHref="/auth/login"
+			backButtonLabel="Back to login"
+		>
+			<div className="flex w-full justify-center items-center">
+				{/* <ExclamationTriangleIcon /> */}
+				<TriangleAlertIcon className="text-destructive" />
+			</div>
+		</CardWrapper>
 	)
 }

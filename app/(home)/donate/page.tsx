@@ -1,12 +1,18 @@
-import { Button } from "@/components/ui/button";
+import { DemoCard } from "@/components/DemoCard"
+import { Footer, Navbar } from "@/components/sections"
 
-export default function DonatePage() {
-  return (
-    <div className="flex flex-col w-[500px] h-[50vh] items-center justify-center mx-auto bg-red-400">
-        <h1 className="header flex text-4xl text-white">Donate Page</h1>
-        <Button variant={"default"} className="flex items-center mt-4 mx-auto" >
-            Go to Homepage
-        </Button> 
-    </div> 
-    )
+const DonatePage = () => {
+	return (
+		<>
+			<main className="flex flex-col w-full h-screen gap-2">
+				<Navbar />
+				<section className="flex w-full h-full items-center mt-20">
+					<DemoCard label="Donate Page" color="bg-primary-dark" />
+				</section>
+			</main>
+			<Footer />
+		</>
+	)
 }
+
+export default DonatePage

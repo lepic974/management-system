@@ -11,7 +11,10 @@ const inter = Inter({ subsets: ["latin"] })
 const poppins = Poppins({ subsets: ["latin"], weight: ["100", "300", "500"] })
 
 export const metadata: Metadata = {
-	title: "YaniPay",
+	title: {
+		default: "YaniPay",
+		template: "%s | YaniPay"
+	},
 	description: "Super Application for save your money",
 }
 
@@ -22,12 +25,20 @@ export default async function RootLayout({
 }>) {
 	const session = await auth()
 
+
 	return (
+		
 		<SessionProvider session={session}>
 			<html lang="en">
 				{/* <SessionWrapper> */}
-				<ThemeProvider attribute="class" defaultTheme="dark">
+				<ThemeProvider 
+					attribute="class" 
+					defaultTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
 					<body
+						suppressHydrationWarning
 						className={`${inter.className} ${
 							process.env.NODE_ENV == "development" ? "debug-screens" : ""
 						}`}

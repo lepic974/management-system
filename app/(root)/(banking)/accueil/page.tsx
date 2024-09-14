@@ -49,17 +49,15 @@ const CardItems = [
 const AccueilPage = () => {
 
   return (
-    <div className="flex w-full h-full justify-center items-center bg-red-300">
-      {/* <Navbar /> */}
-
-      <div className="flex flex-col w-full gap-4 p-10">
-        <h1 className="flex header">Accueil</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4">
+    <>
+      <h1 className="flex header p-3 m-4 border-b-2 border-primary">Accueil</h1>
+      
+      <div className="flex flex-col w-full h-full justify-center bg-red-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-2 p-2">
+          {/* <LucideIcon name="landmark" size={18} />
           <LucideIcon name="landmark" size={18} />
           <LucideIcon name="landmark" size={18} />
-          <LucideIcon name="landmark" size={18} />
-          <LucideIcon name="landmark" size={18} />
+          <LucideIcon name="landmark" size={18} /> */}
 
           {CardItems.map((card, i) => (
 
@@ -80,7 +78,7 @@ const AccueilPage = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

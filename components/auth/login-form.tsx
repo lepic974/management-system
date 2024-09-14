@@ -25,6 +25,7 @@ import { FormSuccess } from "./form-success"
 const LoginForm = () => {
 
 	const searchParms = useSearchParams()
+	const callbackUrl = searchParms?.get("callbackUrl")
 	const urlError =
 		searchParms?.get("error") === "OAuthAccountNotLinked"
 			? "Email already in use with different provider!"
@@ -47,7 +48,7 @@ const LoginForm = () => {
 		setSuccess("")
 
 		startTransition(() => {
-			login(values).then((data) => {
+			login(values, callbackUrl).then((data) => {
 				if(data?.error) {
 					form.reset()
 					setError(data?.error)

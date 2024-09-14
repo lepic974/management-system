@@ -10,6 +10,7 @@ import { toast } from "sonner"
 import { admin } from "@/actions/admin"
 
 const AdminPage = async () => {
+  
 	const role = useCurrentRole()
 
   const onApiRouteClick = () => {

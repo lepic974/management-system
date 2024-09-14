@@ -8,7 +8,9 @@ import { LogoutButton } from "./logout"
 import { LucideLogOut } from "lucide-react"
 
 export const UserButton = () => {
+
   const user = useCurrentUser()
+	
   return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>

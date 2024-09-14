@@ -1,8 +1,11 @@
+"use client"
+
 import { UserInfo } from "@/components/user-info"
 import { currentUser } from "@/lib/auth"
+import { useCurrentUser } from "@/hooks/use-current-user";
 
-const ClientPage = async () => {
-	const user = await currentUser()
+const ClientPage = () => {
+	const user = useCurrentUser()
 
 	return <UserInfo label="😎 Client component" user={user} />
 }

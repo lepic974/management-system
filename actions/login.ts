@@ -1,19 +1,25 @@
 "use server"
 
 import * as z from "zod"
+import { AuthError } from "next-auth"
 
 import { signIn } from "@/auth"
-import { getTwoFactorTokenByEmail } from "@/data/two-factor-token"
-import { getUserByEmail } from "@/data/user"
+import { LoginSchema } from "@/schemas"
+import { DEFAUTL_LOGIN_REDIRECT } from "@/routes"
+
+import { db } from "@/lib/db"
 import { sendTwoFactorTokenEmail, sendVerificationEmail } from "@/lib/mail"
 import { generateTwoFactorToken, generateVerificationToken } from "@/lib/tokens"
-import { DEFAUTL_LOGIN_REDIRECT } from "@/routes"
-import { LoginSchema } from "@/schemas"
-import { AuthError } from "next-auth"
-import { db } from "@/lib/db"
+
+import { getUserByEmail } from "@/data/user"
+import { getTwoFactorTokenByEmail } from "@/data/two-factor-token"
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation"
 
-export const login = async (values: z.infer<typeof LoginSchema>) => {
+export const login = async (
+	values: z.infer<typeof LoginSchema>,
+	callbackUrl?: string | null
+) => {
+	
 	const validatedField = LoginSchema.safeParse(values)
 
 	if (!validatedField.success) {
@@ -41,7 +47,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 		return { success: "Confirmation email sent!" }
 	}
 
-	if (existingUser.isTwoFactorEnable && existingUser.email) {
+	if (existingUser.isTwoFactorEnabled && existingUser.email) {
 		if (code) {
 			// TODO: Verify code
 			const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
@@ -90,7 +96,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 		await signIn("credentials", {
 			email,
 			password,
-			redirectTo: DEFAUTL_LOGIN_REDIRECT,
+			redirectTo: callbackUrl || DEFAUTL_LOGIN_REDIRECT,
 		})
 	} catch (error) {
 		if (error instanceof AuthError) {

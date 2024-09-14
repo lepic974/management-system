@@ -1,19 +1,19 @@
+
 import { Input } from "@/components/ui/input";
-import { getAuthSession } from "@/lib/auth";
 import { LoginButton, LogoutButton } from "../../../components/AuthButtons";
 
 import { Button } from "@/components/ui/button";
+import { currentUser } from "@/lib/auth";
 
 export default async function HomePage() {
-  const session = await getAuthSession();
-
+  // const session = await auth();
+const user = await currentUser()
   return (
     <>
       <div className=" flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="flex w-full h-screen bg-slate-300">
-          <div className="flex card">
-            <p className="flex">{JSON.stringify(session, null, 2)}</p>
-          </div>
+        <div className="flex w-full h-screen">
+          {JSON.stringify(user, null, 2)}
+      
           <div className="flex flex-col justify-center items-center m-auto max-w-xl h-auto px-10 ">
             <h1 className="text-6xl font-bold">Bienvenue 🙏</h1>
             <p className="flex w-md text-base py-10">
@@ -37,8 +37,8 @@ export default async function HomePage() {
             <h1 className="header text-white">
               <span className="text-green-700">Welcome all</span>
               <br />
-              {session?.user
-                ? "Authentificated " + session?.user.name
+              {user
+                ? "Authentificated " + user.name
                 : "Not Authentificated"}
             </h1>
 
@@ -50,9 +50,9 @@ export default async function HomePage() {
 
             <br />
 
-            <div className="flex ">
-              {session?.user ? <LogoutButton /> : <LoginButton />}
-            </div>
+            {/* <div className="flex ">
+              {user ? <LogoutButton /> : <LoginButton />}
+            </div> */}
 
             <br />
             <h2>This is the Homepage</h2>

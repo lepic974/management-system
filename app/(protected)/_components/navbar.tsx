@@ -10,7 +10,7 @@ export const Navbar = () => {
 
 	return (
 		<nav className="bg-primary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-lg">
-			<div className="flex gap-y-10 mr-2">
+			<div className="flex w-full items-center justify-evenly">
 				<Button
 					asChild
 					variant={pathname === "/server" ? "default" : "outline"}
@@ -32,8 +32,14 @@ export const Navbar = () => {
 				>
 					<Link href="/settings">Settings</Link>
 				</Button>
+				<Button
+					asChild
+					variant={pathname === "/dashboard" ? "default" : "outline"}
+				>
+					<Link href="/settings">Dashboard</Link>
+				</Button>
 			</div>
-				<UserButton/>
+			<UserButton />
 		</nav>
 	)
 }

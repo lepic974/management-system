@@ -5,8 +5,20 @@
  */
 
 export const publicRoutes = [
-	"/", 
-	"/auth/new-verification"]
+	"/",
+	"/features",
+	"/banking",
+	"/fidelity",
+	"/identity",
+	"/company",
+	"/company/about",
+	"/company/blog",
+	"/company/our-team",
+	"/donate",
+	"/contact",
+	"/open-ai",
+	"/auth/new-verification",
+]
 
 /**
  * An array of routes that are used for authentification
@@ -20,7 +32,11 @@ export const authRoutes = [
 	"/auth/register",
 	"/auth/error",
 	"/auth/reset",
-	"/auth/new-password"
+	"/auth/new-password",
+	// add secure routes
+
+	"/dashboard",
+	"/users",
 ]
 
 /**
@@ -38,3 +54,4 @@ export const apiAuthPrefix = "/api/auth"
  */
 
 export const DEFAUTL_LOGIN_REDIRECT = "/settings"
+export const DEFAULT_REDIRECT = "/"

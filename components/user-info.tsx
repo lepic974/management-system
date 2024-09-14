@@ -48,10 +48,10 @@ export const UserInfo = ({
 				<div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
 					<p className="text-sm font-medium">2FA Authentication</p>
 					<Badge
-						variant={user?.isTwoFactorEnable ? "success" : "destructive"}
+						variant={user?.isTwoFactorEnabled ? "success" : "destructive"}
 						className="truncate text-xs max-w-[180px] p-1 font-mono dark:bg-slate-900 rounded-md"
 					>
-						{user?.isTwoFactorEnable ? "ON" : "OFF"}
+						{user?.isTwoFactorEnabled ? "ON" : "OFF"}
 					</Badge>
 				</div>
 			</CardContent>

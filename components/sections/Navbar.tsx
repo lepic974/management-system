@@ -104,7 +104,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="flex w-full h-[70px] max-w-full justify-between px-4 py-5 text-sm fixed top-0 z-100 bg-white shadow-md dark:bg-primary-dark">
+    <nav className="flex stricky w-full h-[70px] max-w-full justify-between px-4 py-5 text-sm fixed top-0 z-100 shadow-md">
       {/* Left Side */}
       <section
         ref={animationParent}
@@ -114,7 +114,7 @@ export default function Navbar() {
         <Link href={"/"} className="flex flex-row items-center">
           <Image src={logo} alt="logo" width={48} />
           {isSideMenuOpen && <MobileNav closeSideMenu={closeSideMenu} />}
-          <span className="flex text-2xl font-bold mr-5 text-primary dark:text-white">
+          <span className="flex text-2xl font-bold mr-5 dark:text-primary">
             YaniPay
           </span>
         </Link>
@@ -300,9 +300,10 @@ function SingleNavItem(d: NavItem) {
       ref={animationParent}
       onClick={toggleItem}
       href={d.link ?? "#"}
-      className="relative   px-2 py-3 transition-all "
+      className="relative px-2 py-3 transition-all"
     >
       <p className="flex cursor-pointer items-center gap-2 text-neutral-400 group-hover:text-black ">
+        
         <span>{d.label}</span>
         {d.children && (
           // rotate-180
@@ -314,7 +315,9 @@ function SingleNavItem(d: NavItem) {
 
       {/* dropdown */}
       {isItemOpen && d.children && (
-        <div className="  w-auto  flex-col gap-1 rounded-lg bg-white py-3 transition-all flex ">
+
+        <div className="w-auto flex-col gap-1 rounded-lg bg-white py-3 transition-all flex ">
+
           {d.children.map((ch, i) => (
             <Link
               key={i}

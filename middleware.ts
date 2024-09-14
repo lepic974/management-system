@@ -1,16 +1,20 @@
-import authConfig from "@/auth.config"
 import NextAuth from "next-auth"
+import { NextRequest } from "next/server"
+
+import authConfig from "@/auth.config"
+const { auth } = NextAuth(authConfig)
 
 import {
+	DEFAUTL_LOGIN_REDIRECT,
+	DEFAULT_REDIRECT,
 	apiAuthPrefix,
 	authRoutes,
-	DEFAUTL_LOGIN_REDIRECT,
 	publicRoutes,
 } from "@/routes"
 
-const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
+
 	const { nextUrl } = req
 	const isLoggedIn = !!req.auth
 
@@ -30,7 +34,18 @@ export default auth((req) => {
 	}
 
 	if (!isLoggedIn && !isPublicRoute) {
-		return Response.redirect(new URL("/auth/login", nextUrl))
+		let callbackUrl = nextUrl.pathname
+
+		if (nextUrl.search) {
+			callbackUrl += nextUrl.search
+		}
+		console.log(nextUrl.pathname)
+
+		const encodedCallbackUrl = encodeURIComponent(callbackUrl)
+
+		return Response.redirect(
+			new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl)
+		)
 	}
 
 	console.log("IS LOGGEDIN: ", isLoggedIn)
@@ -41,13 +56,9 @@ export default auth((req) => {
 
 // export { auth as middleware } from "@/auth"
 
+// Skip Next.js internals and all static files, unless found in search params
+// Always run for API routes
+// matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 export const config = {
-	matcher: [
-		// Skip Next.js internals and all static files, unless found in search params
-		"/((?!.+\\.[\\w]+$|_next).*)",
-		"/",
-		// Always run for API routes
-		"/(api|trpc)(.*)",
-	],
-	// matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+	matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"]
 }

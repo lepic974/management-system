@@ -1,9 +1,10 @@
 import { UserRole } from "@prisma/client"
-import { type DefaultSession } from "next-auth"
+import NextAuth, { type DefaultSession } from "next-auth"
 
 export type ExtendedUser = DefaultSession["user"] & {
-  id: string
 	role: UserRole
+	isTwoFactorEnabled: boolean
+	isOAuth: boolean
 }
 
 declare module "next-auth" {
@@ -12,8 +13,8 @@ declare module "next-auth" {
 	}
 }
 
-declare module "next-auth/jwt" {
-	interface JWT {
-		role?: "ADMIN" | "USER"
-	}
-}
+// declare module "next-auth/jwt" {
+// 	interface JWT {
+// 		role?: "ADMIN" | "USER"
+// 	}
+// }

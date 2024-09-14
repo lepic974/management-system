@@ -10,7 +10,7 @@ const Nav = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mr-auto">Chat</h2>
+      <h2 className="text-2xl font-bold mr-auto">YaniStore</h2>
       {/* {session ? <UserProfile /> : <LoginButton />} */}
       {/* <ToogleButton /> */}
 

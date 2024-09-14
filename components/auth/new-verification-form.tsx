@@ -7,13 +7,8 @@ import BeatLoader from "react-spinners/BeatLoader"
 import { CardWrapper } from "./card-wrapper"
 import { FormError } from "./form-error"
 import { FormSuccess } from "./form-success"
-import { getVerificationTokenByToken } from "@/data/verification-token"
-import { getUserByEmail, getUserById } from "@/data/user"
-import { db } from "@/lib/db"
-import { data } from "@/app/_data"
 
 export const NewVerificationForm = async () => {
-	
 	const [error, setError] = useState<string | undefined>()
 	const [success, setSuccess] = useState<string | undefined>()
 
@@ -22,8 +17,8 @@ export const NewVerificationForm = async () => {
 	const token = searchParams?.get("token")
 
 	const onSubmit = useCallback(() => {
-		if(success || error) return
-		
+		if (success || error) return
+
 		if (!token) {
 			setError("Missin token!")
 			return

@@ -1,48 +1,48 @@
 {
-    "workbench.colorTheme": "Andromeda Bordered",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.value": 10,
-    "workbench.preferredDarkColorTheme": "GitHub Dark",
-    "window.zoomLevel": -1,
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "indenteRainbow.colors": [
-        "rgba(255,255,64,0.02",
-        "rgba(127,255,127,0.02",
-        "rgba(255,127,255,0.02",
-        "rgba(79,236,236,0.02"
-    ],
-    "editor.fontFamily": "CommitMonoV138",
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.minimap.enabled": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit",
-        "source.organizeImports": "explicit"
-    },
-    "editor.wordWrap": "on",
-    "files.autoSave": "afterDelay",
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "pnpm-lock.yaml": true
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "git.enableSmartCommit": true,
-    "git.confirmSync": false,
-    "git.autofetch": true,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "terminal.integrated.fontFamily": "monospace"
+	"workbench.colorTheme": "Andromeda Bordered",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.editor.limit.enabled": true,
+	"workbench.editor.limit.value": 10,
+	"workbench.preferredDarkColorTheme": "GitHub Dark",
+	"window.zoomLevel": 0,
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"indenteRainbow.colors": [
+		"rgba(255,255,64,0.02",
+		"rgba(127,255,127,0.02",
+		"rgba(255,127,255,0.02",
+		"rgba(79,236,236,0.02"
+	],
+	"editor.fontFamily": "CommitMonoV138",
+	"editor.tabSize": 2,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.minimap.enabled": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "explicit"
+	},
+	"editor.wordWrap": "on",
+	"files.autoSave": "afterDelay",
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"pnpm-lock.yaml": true
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"git.enableSmartCommit": true,
+	"git.confirmSync": false,
+	"git.autofetch": true,
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"terminal.integrated.fontFamily": "monospace"
 }
