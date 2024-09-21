@@ -6,7 +6,7 @@ const ServerPage = async () => {
 	const session = await auth()
 	const user = await currentUser()
 
-	{JSON.stringify(session.user)}
+	{JSON.stringify(session?.user)}
 
 	return <UserInfo label="💻 Server component" user={user} />
 }

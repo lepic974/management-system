@@ -9,7 +9,7 @@ export const data = [
     },
     {
         id: "2",
-        imgUrl: "./vercel.svg",
+        imgUrl: "/vercel.svg",
         desc: "Achat CB Magasin FNAC",
         amount: "-50.00",
         reward: 1.90,
@@ -17,7 +17,7 @@ export const data = [
     },
     {
         id: "3",
-        imgUrl: "./vercel.svg",
+        imgUrl: "/logo.png",
         desc: "prélèvement Assurance Voiture",
         amount: "-37,89",
         reward: 1.90,
@@ -131,7 +131,7 @@ const ColorItem = [
       },
       secondary: {
         id: 1,
-        name: "",
+        name: "Color Secondary",
         color: "",
       },
     },

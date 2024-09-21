@@ -1,14 +1,14 @@
-import { authConfig } from "@/app/api/Auth/[...nextauth]";
+// import { authConfig } from "@/auth.config";
 import { LoginButton } from "@/components/AuthButtons";
 import { Button } from "@/components/ui/button";
 import getServerSession from "next-auth";
 
 async function SignIn() {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
 
-  if (session) {
-    return <p>{JSON.stringify(session, null, 2)}</p>;
-  }
+  // if (session) {
+  //   return <p>{JSON.stringify(session, null, 2)}</p>;
+  // }
 
   return (
     <div className="flex h-screen max-h-screen w-full">

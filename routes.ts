@@ -18,6 +18,10 @@ export const publicRoutes = [
 	"/contact",
 	"/open-ai",
 	"/auth/new-verification",
+	"/dashboard",
+	"/clients",
+	"/users",
+	"/maintenance",
 ]
 
 /**
@@ -33,10 +37,6 @@ export const authRoutes = [
 	"/auth/error",
 	"/auth/reset",
 	"/auth/new-password",
-	// add secure routes
-
-	"/dashboard",
-	"/users",
 ]
 
 /**

@@ -9,9 +9,9 @@ import { useState } from "react";
 
 import logo from "@/assets/images/logo.png";
 
-import totoImg from "@/assets/images/todo_list.svg";
-import treeImg from "@/assets/images/tree_structure.svg";
-import webcamImg from "@/assets/images/webcam.svg";
+import totoImg from "@/assets/svgs/TodoList.svg";
+import treeImg from "@/assets/svgs/tree_structure.svg";
+import webcamImg from "@/assets/svgs/Webcam.svg";
 import { FiMenu } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 		template: "Product page",
 	},
 	description: "Page des produits de YaniPay",
+	
 }
 
 type Props = {

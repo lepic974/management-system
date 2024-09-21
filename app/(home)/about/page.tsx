@@ -1,5 +1,14 @@
 import { DemoCard } from "@/components/DemoCard"
 import { Footer, Navbar } from "@/components/sections"
+import { Metadata } from "next"
+
+export const generateMetadata = ({params }: {params: {id: string}}): Metadata => {
+	return {
+		title: {
+			absolute: "About" 
+		}
+	}
+}
 
 const AboutPage = () => {
 	return (

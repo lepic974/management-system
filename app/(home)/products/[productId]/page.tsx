@@ -1,4 +1,6 @@
+import { strict } from "assert";
 import { Metadata } from "next";
+import { string } from "zod";
 
 type Props = {
   params: {
@@ -6,22 +8,27 @@ type Props = {
   };
 };
 
-// export async function generateMetadata (( params ): Props): Promise<Metadata> => {
+export const generateMetadata = ({
+  params,
+}: {
+  params: { 
+    productId: string
+  }
+}): Metadata => {
 
-//     const title = await new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve(`iPhone ${params.productId}`)
-//         }, 100);
-//     });
-//     return {
-//         title: `Product ${title}`,
-//     };
-// };
+    return {
+      title: `Product ${params.productId}`
+    }
+}
+
 
 export default function ProductDetails() {
   return (
     <div className="container">
-      <h1 className="header text-white">Details about product</h1>
+      <h1 className="header text-white">
+        Details about product {}
+
+      </h1>
     </div>
   );
 }

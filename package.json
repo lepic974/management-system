@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "dev:docker": "docker compose up -d && next dev",
+    "dev:database": "docker compose up -d && prisma db push",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

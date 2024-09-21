@@ -9,12 +9,12 @@ export interface TransactionProp {
     createAt: string;
 }
 
-interface Prop {
+interface Props {
     transaction: TransactionProp;
     index: number;
 }
 
-async function TransactionCard({ transaction }: Prop ) {
+async function TransactionCard({ transaction }: Props ) {
   return (
     <div className="max-w-sm rounded relative w-full">
         <div className="flex flex-col justify-center items-center">
