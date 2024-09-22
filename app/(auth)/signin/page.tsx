@@ -1,7 +1,7 @@
 // import { authConfig } from "@/auth.config";
 import { LoginButton } from "@/components/AuthButtons";
 import { Button } from "@/components/ui/button";
-import getServerSession from "next-auth";
+//import getServerSession from "next-auth";
 
 async function SignIn() {
   // const session = await getServerSession(authConfig);

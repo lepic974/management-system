@@ -7,7 +7,7 @@ import ExampleComponent from "@/components/ExampleComponent"
 import { Footer, Navbar } from "@/components/sections"
 import { DesignUI } from "@/components/sections/DesignUI"
 
-export default function Page() {
+export default function Home() {
 	// const { data: session, status } = useSession();
 
 	// if (session) {
