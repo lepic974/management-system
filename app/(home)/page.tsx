@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+//import { jestEnvironment } from "jest-environment-jsdom"
 
 import ExampleComponent from "@/components/ExampleComponent"
 import { Footer, Navbar } from "@/components/sections"

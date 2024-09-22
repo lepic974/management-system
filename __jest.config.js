@@ -1,3 +1,4 @@
+/** @type {import('jest').Config} */
 
 const nextJest = require('next/jest')
 
@@ -7,6 +8,7 @@ const createJestConfig = nextJest({
 
 // Ajouter les configurations Jest personnalisées ici
 const customJestConfig = {
+  verbose: true,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // Gestion des imports de styles CSS/SCSS avec un mock
