@@ -7,7 +7,7 @@ interface ProtectedLayoutProps {
 
 const ProtectedLayout = ({ children }: ProtectedLayoutProps) => {
 	return (
-		<div className="flex flex-col w-full h-screen gap-y-10 items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-blue-800">
+		<div className="flex fixed top-0 left-0 flex-col w-full h-screen m-0 p-0 items-center justify-center">
 			{children}
 		</div>
 	)

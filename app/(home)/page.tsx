@@ -1,25 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import Head from "next/head" // Importer le composant Head
 import { useRouter } from "next/navigation"
-//import { jestEnvironment } from "jest-environment-jsdom"
+import { useEffect, useMemo, useState } from "react"
 
 import ExampleComponent from "@/components/ExampleComponent"
 import { Footer, Navbar } from "@/components/sections"
 import { DesignUI } from "@/components/sections/DesignUI"
 
 export default function Home() {
-	// const { data: session, status } = useSession();
-
-	// if (session) {
-	//   console.log(session);
-	// }
-
-	// if (status === "authenticated") {
-	//   return <p>Sign in as {session.user.email}</p>;
-	// }
-	// return <a href="/api/auth/signin">Sign in</a>;
-
 	const [isMaintenanceMode, setIsMaintenanceMode] = useState(false)
 	const [isDevMode, setIsDevMode] = useState(false)
 	const router = useRouter()
@@ -30,39 +19,52 @@ export default function Home() {
 		setIsMaintenanceMode(maintenanceMode)
 		setIsDevMode(developmentMode)
 
-		if (isMaintenanceMode) {
+		if (maintenanceMode) {
 			router.push("/maintenance")
 		}
-	}, [router])
+	}, [router])	
+
+	const devModeMessage = useMemo(
+		() => (
+			<div className="mt-6 p-4 border border-red-500 bg-red-50 text-red-600">
+				<h2 className="text-2xl font-bold">⚙️ Mode développement</h2>
+				<p>
+					Le mode développement est actuellement actif. Cela signifie que le
+					site est en cours de développement et que des erreurs peuvent
+					survenir.
+				</p>
+			</div>
+		),
+		[]
+	)
 
 	if (isMaintenanceMode) {
 		return null
 	}
 
 	return (
-		<main>
-			<Navbar />
-			{/* Section 1 */}
-			<div className="flex flex-col h-screen max-w-7xl md:flex-row items-center justify-center p-4 mx-auto scroll-my-100">
-				<ExampleComponent />
-			</div>
-
-			{/* Section 2 */}
-			<DesignUI />
-			{/* <Header /> */}
-
-			{/* Affichage en mode developpement */}
-			{isDevMode && (
-				<div className="mt-6 p-4 border border-red-500 bg-red-50 text-red-600">
-					<h2 className="text-2xl font-bold">⚙️ Mode developpement</h2>
-					<p>
-						Le mode developpement est actuellement actif. Cela signifie que le
-						site est en cours de développement et que des erreurs peuvent
-						survenir.
-					</p>
+		<>
+			<Head>
+				<title>Accueil</title>
+				{/* Ajouter des scripts ici si nécessaire */}
+				{/* <script async src="https://example.com/some-script.js"></script> */}
+			</Head>
+			<main>
+				<Navbar />
+				{/* Section 1 */}
+				<div className="flex flex-col h-screen max-w-7xl md:flex-row items-center justify-center p-4 mx-auto scroll-my-100">
+					<div className="">
+					{isDevMode && devModeMessage}
+					<ExampleComponent />
+					</div>
 				</div>
-			)}
-			<Footer />
-		</main>
+
+				{/* Section 2 */}
+				<DesignUI />
+
+				{/* Affichage en mode développement */}
+				<Footer />
+			</main>
+		</>
 	)
 }

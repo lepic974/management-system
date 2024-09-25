@@ -5,11 +5,11 @@
 
 # BUILD FOR PRODUCTION
 
-#***********BASE*************#
+#*********** BASE *************#
 FROM node:20-alpine AS base
 #ENV NODE_ENV="production"
 
-#***********INSTALLER*************#
+#*********** INSTALLER*************#
 FROM base AS installer
 
 RUN apk add --no-cache libc6-compat
@@ -26,7 +26,7 @@ RUN npx prisma generate
 
 RUN npm run build
 
-#***********PRUNNER*************#
+#*********** PRUNNER *************#
 FROM base AS prunner
 WORKDIR /app
 
@@ -35,7 +35,7 @@ COPY ./package*.json ./
 
 RUN npm prume --omit=dev
 
-#***********RUNNER*************#
+#*********** RUNNER*************#
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV="production"

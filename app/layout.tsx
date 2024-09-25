@@ -1,3 +1,4 @@
+//"use client"
 import "@/app/globals.css"
 import { auth } from "@/auth"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -5,12 +6,12 @@ import { Toaster } from "@/components/ui/sonner"
 import type { Metadata } from "next"
 import { SessionProvider } from "next-auth/react"
 import { Inter, Poppins } from "next/font/google"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 const poppins = Poppins({ subsets: ["latin"], weight: ["100", "300", "500"] })
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
 	title: {
 		default: "YaniPay",
 		template: "%s | YaniPay",
@@ -25,10 +26,22 @@ export default async function RootLayout({
 }>) {
 	const session = await auth()
 
+	// // State to track if the component has mounted
+	// const [mounted, setMounted] = useState(false)
+
+	// // Use useEffect to set mounted to true after the component mounts
+	// useEffect(() => {
+	// 	setMounted(true)
+	// }, [mounted])
+
+	// // Render null until the component has mounted to avoid hydration errors
+	// if (!mounted) {
+	// 	return null
+	// }
+
 	return (
 		<SessionProvider session={session}>
 			<html lang="fr">
-				{/* <SessionWrapper> */}
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"
@@ -47,7 +60,6 @@ export default async function RootLayout({
 						{children}
 					</body>
 				</ThemeProvider>
-				{/* </SessionWrapper> */}
 			</html>
 		</SessionProvider>
 	)

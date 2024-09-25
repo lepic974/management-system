@@ -106,34 +106,136 @@ export const data = [
 ]
 
 
-const ColorItem = [
-  {
-    id: 1,
-    title: "Color Primary",
-    children: {
-      primary: {
-        variant1: {
-          id: 1,
-          type: "Primary",
-          name: "Primary",
-          color: "#123243",
-        },
-        variant2: {
-          id: 2,
-          name: "Primary Light",
-          color: "",
-        },
-        variant3: {
-          id: 3,
-          name: "Primary Dark",
-          color: "",
-        },
-      },
-      secondary: {
+export const ColorItem = [
+	{
+		id: 1,
+		title: "Color Primary",
+		children: [
+			{
         id: 1,
-        name: "Color Secondary",
-        color: "",
+        name: "Primary",
+        color: "primary",
       },
-    },
-  },
-];
+      {
+        id: 2,
+        name: "Primary Light",
+        color: "primary-light",
+      },
+      {
+        id: 3,
+        name: "Primary Dark",
+        color: "primary-dark",
+      },
+      {
+        id: 4,
+        name: "Bg Dark",
+        color: "bg-dark",
+      }
+    ]
+	},
+	{
+		id: 2,
+		title: "Color Secondary",
+		children: [
+			{
+        id: 1,
+        name: "Secondary",
+        color: "secondaryNew",
+      },
+      {
+        id: 2,
+        name: "Secondary Light",
+        color: "secondaryNew-light",
+      },
+      {
+        id: 3,
+        name: "Secondary Dark",
+        color: "secondaryNew-dark",
+      }
+    ]
+	},
+	{
+		id: 3,
+		title: "Color Accent 1",
+		children: [
+			{
+        id: 1,
+        name: "Accent 1",
+        color: "accent1",
+      },
+      {
+        id: 2,
+        name: "Accent 1 Light",
+        color: "accent1-light",
+      },
+      {
+        id: 3,
+        name: "Accent 1 Dark",
+        color: "accent1-dark",
+      }
+    ]
+	},
+	{
+		id: 4,
+		title: "Color Accent 2",
+		children: [
+			{
+        id: 1,
+        name: "Accent 2",
+        color: "accent2",
+      },
+      {
+        id: 2,
+        name: "Accent 2 Light",
+        color: "accent2-light",
+      },
+      {
+        id: 3,
+        name: "Accent 2 Dark",
+        color: "accent2-dark",
+      }
+    ]
+	},
+	{
+		id: 5,
+		title: "Color Accent 3",
+		children: [
+			{
+        id: 1,
+        name: "Accent 3",
+        color: "accent3",
+      },
+      {
+        id: 2,
+        name: "Accent 3 Light",
+        color: "accent3-light",
+      },
+      {
+        id: 3,
+        name: "Accent 3 Dark",
+        color: "accent3-dark",
+      }
+    ]
+	},
+	{
+		id: 6,
+		title: "Color Accent 4",
+		children: [
+			{
+        id: 1,
+        name: "Accent 4",
+        color: "accent4",
+      },
+      {
+        id: 2,
+        name: "Accent 4 Light",
+        color: "accent4-light",
+      },
+      {
+        id: 3,
+        name: "Accent 4 Dark",
+        color: "accent4-dark",
+      }
+    ]
+	}
+]

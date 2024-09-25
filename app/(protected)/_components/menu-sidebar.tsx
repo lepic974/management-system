@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const SidebarItems = [
 	{
@@ -14,47 +15,47 @@ const SidebarItems = [
 			},
 			{
 				label: "Store",
-				link: "/store",
+				link: "/dashboard/store",
 				icon: "/Shop.svg",
 			},
 			{
 				label: "Reward",
-				link: "/rewards",
+				link: "/dashboard/reward",
 				icon: "/Trophy.svg",
 			},
 			{
 				label: "Gift Card",
-				link: "/gift-card",
+				link: "/dashboard/gift-card",
 				icon: "/Gift.svg",
 			},
 			{
 				label: "Integrations",
-				link: "/integrations",
+				link: "/dashboard/integrations",
 				icon: "/Module.svg",
 			},
 			{
 				label: "Agency",
-				link: "/agency",
-				icon: "/Suitcase.svg",
+				link: "/dashboard/agency",
+				icon: require("/assets/svgs/suitcase.svg"),
 			},
 			{
 				label: "Team Member",
-				link: "/team-member",
-				icon: "/assets/svgs/home.svg",
+				link: "/dashboard/team-member",
+				icon: require("/assets/svgs/home.svg"),
 			},
 			{
 				label: "Analytics",
-				link: "/analytics",
+				link: "/dashboard/analytics",
 				icon: "/Tools.svg",
 			},
 			{
 				label: "Orders",
-				link: "/orders",
+				link: "/dashboard/orders",
 				icon: "/ShoppingCart.svg",
 			},
 			{
 				label: "Customer",
-				link: "/customer",
+				link: "/dashboard/customer",
 				icon: "/MaleUser.svg",
 			},
 		],
@@ -64,23 +65,23 @@ const SidebarItems = [
 		childen: [
 			{
 				label: "Home",
-				link: "/home",
+				link: "/dashboard/home",
 				icon: "/home.svg",
 			},
 			{
 				label: "Account",
-				link: "/account",
+				link: "/dashboard/account",
 				icon: "/Wallet.svg",
 			},
 			{
 				label: "Card",
-				link: "/card",
-				icon: "/CreditCard.svg",
+				link: "/dashboard/card",
+				icon: require("/assets/svgs/CreditCard.svg"),
 			},
 			{
 				label: "Payments",
-				link: "/payments",
-				icon: "/Todo_list.svg",
+				link: "/dashboard/payments",
+				icon: require("/assets/svgs/TestPassed.svg"),
 			},
 		],
 	},
@@ -89,22 +90,22 @@ const SidebarItems = [
 		childen: [
 			{
 				label: "Profile",
-				link: "/home",
+				link: "/dashboard/home",
 				icon: "/MaleUser.svg",
 			},
 			{
 				label: "Documents",
-				link: "/account",
+				link: "/dashboard/account",
 				icon: "/TestPassed.svg",
 			},
 			{
 				label: "Verif",
-				link: "/card",
+				link: "/dashboard/card",
 				icon: "/OK.svg",
 			},
 			{
 				label: "Settings",
-				link: "/settings",
+				link: "/dashboard/settings",
 				icon: "/Gear.svg",
 			},
 		],
@@ -112,27 +113,38 @@ const SidebarItems = [
 ]
 
 const MenuSidebar = () => {
+	const pathname = usePathname()
   return (
-    <div>
-      {SidebarItems.map(i => (
-        <div className="flex flex-col gap-2 overflow-scroll">
-          <div className="flex flex-col gap-2 py-4 px-2" key={i.section}>
-            <span className="text-md font-semibold text-primary-light">
-            {i.section}
-            </span>
-            {i.childen.map(c => (
-              <Link href={c.link} key={c.label} className="flex flex-row items-center justify-start gap-2 py-1/2 px-2 hover:bg-blue-600">
-                <Image src={c.icon} alt={c.label} width={22} height={22} />
-                <span className="text-sm font-semibold uppercase">{c.label}</span>
-              </Link>
-            ))}
-          </div>
-
-
-        </div>
-      ))}
-    </div>
-  )
+		<div>
+			{SidebarItems.map((i, index) => (
+				<div key={index} className="flex flex-col h-full overflow-scroll">
+					<div className="flex flex-col gap-2 py-2 px-2" key={i.section}>
+						<span className="text-md font-semibold text-primary-dark">
+							{i.section}
+						</span>
+						{i.childen.map((c) => (
+							<Link
+								href={c.link}
+								key={c.label}
+								className="flex flex-row items-center justify-start gap-2 py-1 px-2 hover:bg-blue-600 hover:rounded-xl hover:text-primary-light cursor-pointer"
+							>
+								<Image src={c.icon} alt={c.label} width={22} height={22} />
+								{c.link === pathname ? (
+									<span className="text-sm font-black uppercase text-secondary-dark scale-105">
+										{c.label}
+									</span>
+								) : (
+									<span className="text-[14px] font-semibold uppercase">
+										{c.label}
+									</span>
+								)}
+							</Link>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	)
 }
 
 export default MenuSidebar
