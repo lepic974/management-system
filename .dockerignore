@@ -7,6 +7,9 @@ test
 .github
 .env
 .env.local
+.env.dev
+.env.production
+.env.test
 .eslintrc.json
 .gitignore
 .prettierrc
@@ -16,3 +19,4 @@ npm-debug.log
 !.next/static
 !.next/standalone
 README.md
+prisma/seed.ts

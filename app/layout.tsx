@@ -41,7 +41,7 @@ export default async function RootLayout({
 
 	return (
 		<SessionProvider session={session}>
-			<html lang="fr">
+			<html lang="fr" suppressHydrationWarning>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"
@@ -56,8 +56,8 @@ export default async function RootLayout({
 								: ""
 						}`}
 					>
-						<Toaster />
 						{children}
+						<Toaster />
 					</body>
 				</ThemeProvider>
 			</html>
